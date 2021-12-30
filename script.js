@@ -1,10 +1,10 @@
 window.onload = init;
 function init() {
-    
+  const location=[76.6932438,10.6900333]  
   const map = new ol.Map({
     view: new ol.View({
-      center: [4.35247, 50.84673],
-      zoom:5,
+      center: ol.proj.fromLonLat(location),
+      zoom:10,
     }),
     layers:[
     new ol.layer.Tile({
@@ -16,7 +16,7 @@ function init() {
   })
 var Styledot = new ol.style.Style({
   image: new ol.style.Circle({
-    radius:10,
+    radius:6,
     fill: new ol.style.Fill({
       color:'#ff2e05'
     })
@@ -33,8 +33,8 @@ var Stylepicker = new ol.style.Style({
 })
 
  var marker = new ol.Feature({
-  geometry: new ol.geom.Point([4.35247, 50.84673]),
-  type:'hospital',
+  geometry: new ol.geom.Point(ol.proj.fromLonLat(location)),
+  type:'current location',
   name:'test'
  });
 
